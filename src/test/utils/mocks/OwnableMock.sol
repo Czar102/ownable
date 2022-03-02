@@ -5,7 +5,7 @@ import {Ownable} from "../../../Ownable.sol";
 
 contract OwnableMock is Ownable {
 
-    constructor() Ownable(msg.sender) {
+    constructor() {
         // NO-OP
     }
 

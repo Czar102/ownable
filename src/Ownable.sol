@@ -12,10 +12,10 @@ pragma solidity 0.8.10;
  *      in which a pending owner is assigned by the owner. Afterwards the
  *      pending owner can accept the contract's ownership.
  *
- *      Note that the contract's owner can not be set to the zero address,
+ *      Note that the contract's owner can NOT be set to the zero address,
  *      i.e. the contract can not be withoyt ownership.
  *
- *      The contract's first owner is given in the contructor.
+ *      The contract's initial owner is the contract deployer.
  *
  *      This module is used through inheritance. It will make available the
  *      modifier `onlyOwner`, which can be applied to your functions to
@@ -75,8 +75,8 @@ abstract contract Ownable {
     //--------------------------------------------------------------------------
     // Constructor
 
-    constructor(address _owner) {
-        owner = _owner;
+    constructor() {
+        owner = msg.sender;
         // pendingOwner = address(0);
     }
 
