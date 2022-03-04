@@ -96,7 +96,7 @@ abstract contract Ownable {
     /// @dev Current owner as pending owner is invalid.
     /// @param pendingOwner_ The new pending owner.
     function setPendingOwner(address pendingOwner_) external onlyOwner {
-        if (pendingOwner_ == owner) {
+        if (pendingOwner_ == msg.sender) {
             revert InvalidPendingOwner();
         }
 
@@ -108,14 +108,14 @@ abstract contract Ownable {
     /// @notice Accept the contract's ownership as current pending owner.
     /// @dev Only callable by current pending owner.
     function acceptOwnership() external {
-        if (msg.sender != _pendingOwner) {
+		address pendingOwner_ = _pendingOwner;
+        if (msg.sender != pendingOwner_) {
             revert OnlyCallableByPendingOwner();
         }
 
-        emit NewOwner(owner, _pendingOwner);
+        emit NewOwner(owner, pendingOwner_);
 
-        owner = _pendingOwner;
+        owner = pendingOwner_;
         _pendingOwner = address(0);
     }
-
 }
