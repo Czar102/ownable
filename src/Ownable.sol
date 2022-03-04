@@ -108,14 +108,13 @@ abstract contract Ownable {
     /// @notice Accept the contract's ownership as current pending owner.
     /// @dev Only callable by current pending owner.
     function acceptOwnership() external {
-		address pendingOwner_ = _pendingOwner;
-        if (msg.sender != pendingOwner_) {
+        if (msg.sender != _pendingOwner) {
             revert OnlyCallableByPendingOwner();
         }
 
-        emit NewOwner(owner, pendingOwner_);
+        emit NewOwner(owner, msg.sender);
 
-        owner = pendingOwner_;
+        owner = msg.sender;
         _pendingOwner = address(0);
     }
 }
