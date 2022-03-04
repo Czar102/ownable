@@ -7,14 +7,14 @@ Ownable Contract using Two-Step Transfer Pattern
 
 Contract module which provides a basic access controler mechanism,
 where there is an account (an owner) that can be granted exclusive
-access specific functions.
+access to specific functions.
 
 The contract owner is changeable through a two-step transfer pattern,
 in which a pending owner is assigned by the owner. Afterwards the
 pending owner can accept the contract's ownership.
 
 Note that the contract's owner can not be set to the zero address,
-i.e. the contract can not be withoyt ownership.
+i.e. the contract can not be without ownership.
 
 The contract's initial owner is the contract deployer.
 
